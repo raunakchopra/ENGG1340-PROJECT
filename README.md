@@ -31,7 +31,7 @@ For this Project we are going to use each of the following features:
 3) Dynamic memory management:
 	Dynamic memory management will be implemented for the dynamic array which will keep tab of the cards used and the bet value of the player and whether he is loosing or winning.
 	
-4)File input/output (e.g., for loading/saving game status):
+4) File input/output (e.g., for loading/saving game status):
 	Each draw of cards will be displayed in the game file and the user can input his choice over there while also viewing the bet value.
 	
 Program codes in multiple files:
