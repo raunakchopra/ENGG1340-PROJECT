@@ -34,7 +34,7 @@ For this Project we are going to use each of the following features:
 4) File input/output (e.g., for loading/saving game status):
 	Each draw of cards will be displayed in the game file and the user can input his choice over there while also viewing the bet value.
 	
-Program codes in multiple files:
+5) Program codes in multiple files:
 	There will be two files, one for the functions and the data structures while the other file would implement these ideas and output the game. 
 
 
