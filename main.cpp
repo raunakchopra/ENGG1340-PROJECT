@@ -13,15 +13,13 @@ using namespace std;
 #define HEART "\xE2\x99\xA5"
 #define DIAMOND "\xE2\x99\xA6"
 
-//game.cpp functions
-
-int total_value(vector<card>);
-bool Ace_present(vector<card>);
-void bet(person&);
-int payment(person, person&);
-void output(vector<card>);
-void game(vector<person> &players, int *arr);
-card deal_card();
+int total_value(vector<card>); //function to find the total value of all the cards present
+bool Ace_present(vector<card>); //function to check if the player has an Ace card
+void bet(person&); //function to promt user to make bet
+int payment(person, person&); //function to payout after each round
+void output(vector<card>); //function to give output of the cards
+void game(vector<person> &players, int *arr); //function to run the game
+card deal_card(); //function to deal cards to a player
 
 
 void save(person user){ //saves the user data in the assigned binary filer
@@ -80,7 +78,7 @@ profile log_in() //this function is used to open a existing player record
 		option.open(filename); //opens a pre existing binary file
 		bool exist = option.fail();
 		while(exist){
-			cout << "Please Enter Valid Username : " << endl;
+			cout << "Please Enter Valid Username : " << endl; //until a valid username is inputted it keeps on prompting user
 			cin >> User;
 				filename = User + ".dat";
 				option.open(filename);
@@ -92,7 +90,7 @@ profile log_in() //this function is used to open a existing player record
 
 		cout << "Please enter Password : " << endl; //confirms the password of the user file
 		cin >> password;
-		while (password != user.password){
+		while (password != user.password){ //if the password does not match, it keeps on promting to enter valid password
 			cout << "Please enter Correct Password : " << endl;
 			cin >> password;
 		}
@@ -116,7 +114,7 @@ int main(){ //driver function
 	house.info.User = "House"; 
 	players.push_back(house);
 
-	int opt;
+	int opt; //we ask for whether the user wants to view the rules or start the play
 	cout << "Blackjack 21!" << endl;
 	cout << "Select an Option to Continue." << endl;
 	cout << "Enter 1. for the Rules" << endl;
@@ -133,20 +131,20 @@ while(opt != 2){
 		cout << "Enter 2. to  Play" << endl; 
 		cin >> opt;
 	}
-	else{ 
+	else{ //if the input is invalid it prompts again
 			cout << "Please enter 1 or 2" << endl; 
 			cin >> opt;
 		}
 
 }
-				cout << "Enter the number of players: " << endl; 
+				cout << "Enter the number of players: " << endl; //ask the number of players
 				int num; 
 				cin >> num; 
-				arr = new int [num*3];
+				arr = new int [num*3]; //creates a dynamic array to store the number of wins, ties and losses of each player
 				for (int i = 0; i < num*3; i++)
 					arr[i]=0;
 
-				for(int i = 0;i< num;i++){ 
+				for(int i = 0;i< num;i++){  // for each player checks if they are an existing player or new player
 					cout << endl << "If you are an existing Player Enter E or Enter N to create new profile?" << endl;
 					cin >> option;
 
@@ -171,7 +169,7 @@ while(opt != 2){
 	int flag = 0;
 	while(players.size() > 1){
 		for(int i =1;i<players.size();i++){
-			if(players[i].info.chip < 5){ //checks if user has balance lower than minimum value
+			if(players[i].info.chip < 5){ //checks if user has balance lower than minimum value and then ends the game for only that user
 				cout << players[i].info.User << " is out of money. Game Over !" << endl;
 					save(players[i]);
 					players.erase(players.begin() + (i));
@@ -181,7 +179,7 @@ while(opt != 2){
 
 				}
 
-			if(flag == 1 && players.size() > 1){
+			if(flag == 1 && players.size() > 1){ //after each play but after the first play ask each player wheter they would like to stay or leave 
 				cout << endl << players[i].info.User << ", Enter L to Leave or S to Stay ?" << endl;
 				cin >> option;
 				if(option == 'L' || option == 'l'){
@@ -193,13 +191,13 @@ while(opt != 2){
 				}
 			}
 		}
-		if (players.size()>1){
+		if (players.size()>1){ //if the game begins, we raise the flag since we need to ask after first play if the player would like to stay or leave
 			cout << endl;
 		game(players, arr);
 		flag = 1;}
 	}
 
 	return 0;
-	delete[] arr;
+	delete[] arr; //delete the dynamic array after the use
 }
 
