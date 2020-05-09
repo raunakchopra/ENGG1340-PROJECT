@@ -2,7 +2,7 @@
 #include<vector>
 #include "structure.h"
 
-#define SPADE "\xE2\x99\xA0"
+#define SPADE "\xE2\x99\xA0" //to define the symbols needed to show the various cards
 #define CLUB "\xE2\x99\xA3"
 #define HEART "\xE2\x99\xA5"
 #define DIAMOND "\xE2\x99\xA6"
