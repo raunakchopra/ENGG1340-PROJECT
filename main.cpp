@@ -13,6 +13,8 @@ using namespace std;
 #define HEART "\xE2\x99\xA5"
 #define DIAMOND "\xE2\x99\xA6"
 
+//game.cpp functions
+
 int total_value(vector<card>);
 bool Ace_present(vector<card>);
 void bet(person&);
